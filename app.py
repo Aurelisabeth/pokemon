@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import joblib
 
-# ✅ Classe du modèle (copiée depuis model.py)
+# Reconstruction directe du modèle (à l’identique de ton entraînement)
 class PokemonClassifier(nn.Module):
     def __init__(self):
         super().__init__()
@@ -19,8 +19,10 @@ class PokemonClassifier(nn.Module):
     def forward(self, x):
         return self.model(x)
 
-# 🔁 Chargement modèle & scaler
+# Charger le modèle vide
 model = PokemonClassifier()
+
+# Charger les poids entraînés (sans classe custom)
 model.load_state_dict(torch.load("model/model_pokemon.pt", map_location=torch.device("cpu")))
 model.eval()
 
